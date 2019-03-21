@@ -1,7 +1,8 @@
 # EOSNodeSyncStatus
 A tool for checking the status of EOS nodes. Originally for checking the sync status
 
-<img width="711" alt="screen shot 2019-03-03 at 9 50 18 pm" src="https://user-images.githubusercontent.com/2269864/53707914-fac96180-3dfe-11e9-8bf1-06ee72d7e3d1.png">
+![mar-04-2019 14-37-10](https://user-images.githubusercontent.com/2269864/53758179-4b869c00-3e8b-11e9-811b-19525622ab02.gif)
+
 
 ## Installation
 For running this tool you have to use `Python3` and `requests` module.
@@ -19,6 +20,6 @@ PAUSE=5
 # The main node
 MAIN_NODE=http://35.183.49.71:8888
 # Standard node for checking with
-STANDARD_NODE=https://api.eostitan.com
+STANDARD_NODE=https://api.eostitan.com,https://rpc.eosys.io,https://api.main.alohaeos.com:443,https://api.cypherglass.com:443
 ```
 Then tun the tool by command: `python3 app.py`
