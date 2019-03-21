@@ -7,3 +7,4 @@ PAUSE=5
 MAIN_NODE=http://35.183.49.71:8888
 # Standard nodes (Only the first one will work for now)
 STANDARD_NODE=https://api.eostitan.com,https://rpc.eosys.io,https://api.main.alohaeos.com:443,https://api.cypherglass.com:443
+# STANDARD_NODE=https://api.eostitan.com

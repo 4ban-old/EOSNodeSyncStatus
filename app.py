@@ -57,15 +57,19 @@ def get_data():
 
     standard_acceleration = get_acceleration(STANDARD_NODE)
     main_acceleration = get_acceleration(MAIN_NODE, main=True)
+    time_min = round((standard_node_blocks[0]/main_acceleration)/12)
 
-    return standard_node_blocks, main_node_blocks, round(main_node_blocks/standard_node_blocks[0]*100, 5), standard_acceleration, main_acceleration
+    return standard_node_blocks, main_node_blocks, round(main_node_blocks/standard_node_blocks[0]*100, 5), standard_acceleration, main_acceleration, time_min
 
-def refresh(std_node_blocks, main_node_blocks, ratio, std_acceleration, main_acceleration):
+def refresh(std_node_blocks, main_node_blocks, ratio, std_acceleration, main_acceleration, time_min):
     for index, node in enumerate(std_node_blocks):
-        screen.addstr(index,0, "Head block: %s (acceleration: %s new blocks per %s seconds) for %s" % (node, std_acceleration[index], PAUSE, STANDARD_NODE[index]))
+        screen.addstr(index,0, "Head block: %s (acceleration: %s new blocks per %s seconds) for %s node" % (node, std_acceleration[index], PAUSE, STANDARD_NODE[index]))
     screen.addstr(len(std_node_blocks)+1, 0, "#####################################################")
-    screen.addstr(len(std_node_blocks)+2, 0, "Head block: %s (acceleration: %s new blocks per %s seconds) for %s" % (main_node_blocks, main_acceleration, PAUSE, MAIN_NODE))
-    screen.addstr(len(std_node_blocks)+3, 0, "Node status: %s %% for %s" % (ratio, MAIN_NODE))
+    screen.addstr(len(std_node_blocks)+2, 0, "Head block: %s (acceleration: %s new blocks per %s seconds) for %s node" % (main_node_blocks, main_acceleration, PAUSE, MAIN_NODE))
+    screen.addstr(len(std_node_blocks)+3, 0, "Node status: %s %% for %s node" % (ratio, MAIN_NODE))
+    screen.addstr(len(std_node_blocks)+4, 0, "#####################################################")
+    screen.addstr(len(std_node_blocks)+5, 0, "Remains: %s days" % (round((time_min/60)/24)))
+
     screen.refresh()
 
 if __name__ == "__main__":
@@ -89,8 +93,8 @@ if __name__ == "__main__":
         curses.init_pair(i + 1, i, -1)
     try:
         while True:
-            std_node_blocks, main_node_blocks, ratio, std_acceleration, main_acceleration = get_data()
-            refresh(std_node_blocks, main_node_blocks, ratio, std_acceleration, main_acceleration)
+            std_node_blocks, main_node_blocks, ratio, std_acceleration, main_acceleration, time_min = get_data()
+            refresh(std_node_blocks, main_node_blocks, ratio, std_acceleration, main_acceleration, time_min)
             time.sleep(1)
     finally:
         curses.echo()
