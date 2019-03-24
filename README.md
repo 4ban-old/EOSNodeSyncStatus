@@ -1,8 +1,7 @@
 # EOSNodeSyncStatus
 A tool for checking the status of EOS nodes. Originally for checking the sync status
 
-![mar-04-2019 14-37-10](https://user-images.githubusercontent.com/2269864/53758179-4b869c00-3e8b-11e9-811b-19525622ab02.gif)
-
+<img width="660" alt="Screen Shot 2019-03-24 at 2 12 20 PM" src="https://user-images.githubusercontent.com/2269864/54883705-e6491980-4e3e-11e9-8f60-5041e987c1e2.png">
 
 ## Installation
 For running this tool you have to use `Python3` and `requests` module.
